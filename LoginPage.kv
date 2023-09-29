@@ -1,4 +1,12 @@
-Question1Screen
+<LoginManager>:
+    Question1Screen:
+        name: "question1"
+    Question2Screen:
+        name: "question2"
+    CorrectScreen:
+        name: "correct"
+    ErrorScreen:
+        name: "error"
 
 <Question1Screen>:
     BoxLayout:
@@ -8,10 +16,25 @@ Question1Screen
         BoxLayout:
             Button:
                 text: "Peach"
+                on_release: root.answer_question(False)
             Button:
-                text: "Apple"
+                text: "Grapefruit"
+                on_release: root.answer_question(True)
             Button:
                 text: "Grape"
+                on_release: root.answer_question(False)
+<Question2Screen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Complete the following verse: \n\n'The stars at night are big and bright, ____________"
+            size_hint: 1,7
+        TextInput:
+            id: heart
+            hint_text: "Enter remaining verse"
+        Button:
+            text: "Press Enter"
+            on_release: root.answer_question(heart.text)
 
 
 <CorrectScreen>:
@@ -23,6 +46,7 @@ Question1Screen
             text: "Correct!"
         Button:
             text: "Next"
+            on_release: root.advance()
 
 <ErrorScreen>:
     BoxLayout:
@@ -32,3 +56,4 @@ Question1Screen
             text: "Wrong!"
         Button:
             text: "Next"
+            on_release: root.advance
