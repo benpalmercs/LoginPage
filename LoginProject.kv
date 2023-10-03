@@ -1,0 +1,70 @@
+<LoginManager>:
+    SignInScreen:
+        name: "signin"
+    RegisterScreen:
+        name: "register"
+    WelcomeScreen:
+        name: "welcome"
+
+
+<SignInScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            id: invalid_creds
+            text:""
+        BoxLayout:
+            orientation: "horizontal"
+            Label:
+                text: "Username"
+            TextInput:
+                id: username
+        BoxLayout:
+            orientation: "horizontal"
+            Label:
+                text: "Password"
+            TextInput:
+                id: password
+        Button:
+            text: "Register New Account"
+            color:"red"
+            on_release: root.register()
+        Button:
+            text: "Enter"
+
+<WelcomeScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Welcome"
+        Button:
+            text: "Log out"
+
+<RegisterScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            id: bad_account
+            text:""
+        BoxLayout:
+            orientation: "horizontal"
+            Label:
+                text: "Enter New Username"
+            TextInput:
+                id: new_username
+        BoxLayout:
+            orientation: "horizontal"
+            Label:
+                text: "Enter New Password"
+            TextInput:
+                id: new_password
+        BoxLayout:
+            orientation: "horizontal"
+            Label:
+                text: "Reenter New Password"
+            TextInput:
+                id: new_password2
+        Label:
+            text: "Password must contain at least one: \n-capitalized letter(ext. ABC...XYZ) \n-lowercase letter(ex. abc...xyz) \n-number(1234567890) \n-special character (i.e. ~!@#$%^&*?)"
+        Button:
+            text: "Enter"

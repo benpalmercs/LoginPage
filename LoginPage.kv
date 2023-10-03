@@ -27,7 +27,10 @@
     BoxLayout:
         orientation: "vertical"
         Label:
-            text: "Complete the following verse: \n\n'The stars at night are big and bright, ____________"
+            id: invalid_guess
+            text:""
+        Label:
+            text: "Complete the following verse: \n\n'The stars at night are big and bright, ____________."
             size_hint: 1,7
         TextInput:
             id: heart
@@ -56,4 +59,4 @@
             text: "Wrong!"
         Button:
             text: "Next"
-            on_release: root.advance
+            on_release: root.advance()
