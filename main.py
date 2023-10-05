@@ -53,21 +53,46 @@ class LoginManager(ScreenManager):
 class SignInScreen(Screen):
     def register(self):
         self.manager.current = "register"
-    def sign_in(self,username,password):
-        if (username in users.items) and (users[username] == password):
+        self.ids.invalid_creds.text = " "
+
+    def sign_in(self, username, password):
+        if username in users and password == users[username]:
             self.manager.current = "welcome"
+            self.ids.invalid_creds.text = " "
         else:
             self.ids.invalid_creds.text = "invalid credentials"
             self.ids.invalid_creds.color = "red"
 
 
-
 class WelcomeScreen(Screen):
-    pass
+    def logout(self):
+        self.manager.current = "signin"
+
+
+def checknum(text, numbers):
+    for i in numbers:
+        if i in text:
+            return True
+
+
+def checkchar(text, characters):
+    for i in characters:
+        if i in text:
+            return True
 
 
 class RegisterScreen(Screen):
-    pass
+    def register_account(self, username, password, password2):
+        if password == password2 and password != password.lower() and password != password.upper() and len(
+                password) > 8 and username not in users and checknum(password, "1234567890") and checkchar(password,
+                                                                                                           "`~!@#$%^&*()_-+=[]}{\|?/<>"):
+            users.update({username: password})
+            self.manager.current = "signin"
+        else:
+            self.ids.bad_account.text = "invalid username or password"
+            self.ids.bad_account.color = "red"
+    def quit(self):
+        self.manager.current = "signin"
 
 
 Builder.load_file("LoginProject.kv")

@@ -9,36 +9,48 @@
 
 <SignInScreen>:
     BoxLayout:
+        padding: [40,40]
         orientation: "vertical"
+        spacing: "12dp"
         Label:
+            size_hint: 1,0.5
             id: invalid_creds
             text:""
         BoxLayout:
             orientation: "horizontal"
             Label:
+                size_hint: 0.5,0.5
                 text: "Username"
             TextInput:
+                size_hint: 1,0.5
                 id: username
         BoxLayout:
             orientation: "horizontal"
             Label:
+                size_hint: 0.5,0.5
                 text: "Password"
             TextInput:
+                size_hint: 1,0.5
                 id: password
+        Label:
+            text: " "
         Button:
             text: "Register New Account"
             color:"red"
             on_release: root.register()
         Button:
             text: "Enter"
+            on_release: root.sign_in(username.text,password.text)
 
 <WelcomeScreen>:
     BoxLayout:
+        padding: [100,100]
         orientation: "vertical"
         Label:
             text: "Welcome"
         Button:
             text: "Log out"
+            on_release: root.logout()
 
 <RegisterScreen>:
     BoxLayout:
@@ -47,18 +59,21 @@
             id: bad_account
             text:""
         BoxLayout:
+            size_hint: 1,0.5
             orientation: "horizontal"
             Label:
                 text: "Enter New Username"
             TextInput:
                 id: new_username
         BoxLayout:
+            size_hint: 1,0.5
             orientation: "horizontal"
             Label:
                 text: "Enter New Password"
             TextInput:
                 id: new_password
         BoxLayout:
+            size_hint: 1,0.5
             orientation: "horizontal"
             Label:
                 text: "Reenter New Password"
@@ -66,5 +81,11 @@
                 id: new_password2
         Label:
             text: "Password must contain at least one: \n-capitalized letter(ext. ABC...XYZ) \n-lowercase letter(ex. abc...xyz) \n-number(1234567890) \n-special character (i.e. ~!@#$%^&*?)"
-        Button:
-            text: "Enter"
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                text: "Quit"
+                on_release: root.quit()
+            Button:
+                text: "Enter"
+                on_release: root.register_account(new_username.text,new_password.text,new_password2.text)
