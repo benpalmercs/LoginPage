@@ -22,7 +22,7 @@
                 size_hint: 0.5,0.5
                 text: "Username"
             TextInput:
-                size_hint: 1,0.5
+                size_hint: 0.5,0.5
                 id: username
         BoxLayout:
             orientation: "horizontal"
@@ -30,7 +30,7 @@
                 size_hint: 0.5,0.5
                 text: "Password"
             TextInput:
-                size_hint: 1,0.5
+                size_hint: 0.5,0.5
                 id: password
         Label:
             text: " "
@@ -59,29 +59,37 @@
             id: bad_account
             text:""
         BoxLayout:
+            padding: "12dp"
             size_hint: 1,0.5
             orientation: "horizontal"
             Label:
                 text: "Enter New Username"
             TextInput:
+                size_hint: 1,1
                 id: new_username
         BoxLayout:
+            padding: "12dp"
             size_hint: 1,0.5
             orientation: "horizontal"
             Label:
                 text: "Enter New Password"
             TextInput:
+                size_hint: 1,1
                 id: new_password
         BoxLayout:
+            padding: "12dp"
             size_hint: 1,0.5
             orientation: "horizontal"
             Label:
                 text: "Reenter New Password"
             TextInput:
+                size_hint: 1,1
                 id: new_password2
         Label:
             text: "Password must contain at least one: \n-capitalized letter(ext. ABC...XYZ) \n-lowercase letter(ex. abc...xyz) \n-number(1234567890) \n-special character (i.e. ~!@#$%^&*?)"
         BoxLayout:
+            spacing: "12dp"
+            padding: [10,10]
             orientation: "horizontal"
             Button:
                 text: "Quit"
